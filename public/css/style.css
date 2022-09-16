@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body{
+    background-color: #030303;
+    color: white;
+}
+
+
+/* HEADER */
+
+.header{
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header h1 > a{
+    font-size: 39px;
+    font-family: 'Dancing Script';
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.myProfileLink{
+    background-color: #1A1A1B;
+    font-size: 20px;
+    padding: 1rem 1.5rem;
+}
+
+.myProfileLink{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+/* FEED */
+
+.feedContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.feedPost{
+    width: 750px;
+    height: 600px;
+    background-color: #1A1A1B;
+    display: flex;
+}
+
+.likesBar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    width: 125px;
+    background-color: #151515;
+}
+
+.feedImg{
+   width: 100%;
+}
+
+#feedTitle{
+    font-size: 25px;
+}

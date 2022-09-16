@@ -13,7 +13,7 @@ const postRoutes = require("./routes/posts");
 const commentRoutes = require("./routes/comments");
 
 //Use .env file in config folder
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config({ path: "../../.env" });
 
 // Passport config
 require("./config/passport")(passport);
