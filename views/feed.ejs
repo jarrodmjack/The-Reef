@@ -1,11 +1,14 @@
 <%- include('partials/header') -%>
+<section class="feedBody">
   <div class="feedContainer container">
     <% for(let i=0; i<posts.length; i++) {%>
       <div class="feedPost">
         <div class="likesBar">
-          <span>&uparrow;</span>
+          <div class="likesArrowsContainer">
+            <ion-icon class="voteArrow" name="arrow-up-outline"></ion-icon>
           <span>10,234</span>
-          <span>&downarrow;</span>
+          <ion-icon class="voteArrow" name="arrow-down-outline"></ion-icon>
+        </div>
         </div>
         <div class="feedContentContainer">
           <div>
@@ -17,10 +20,25 @@
             </a>
           </div>
           <div class="commentsAndShare">
-            <h4>Comments</h4>
+            <div class="feedIconContainer">
+              <ion-icon class="feedIcon" name="chatbox-outline"></ion-icon>
+            <h4>32 Comments</h4>
+            </div>
+            <div class="feedIconContainer">
+              <h4>Share</h4>
+              <ion-icon 
+              class="feedIcon" name="share-social-outline"></ion-icon>
+            </div>
           </div>
         </div>
       </div>
       <% } %>
   </div>
+  <div class="profileSquareOnFeed">
+    <h1>Create your own post</h1>
+  </div>
+</section>
   <%- include('partials/footer') -%>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
