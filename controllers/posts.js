@@ -31,6 +31,8 @@ module.exports = {
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary
+      const typeOfPost = req.body.typeOfPostSelect
+      console.log(typeOfPost)
       const result = await cloudinary.uploader.upload(req.file.path);
 
       await Post.create({
@@ -39,6 +41,7 @@ module.exports = {
         cloudinaryId: result.public_id,
         caption: req.body.caption,
         likes: 0,
+        typeOfPost: req.body.typeOfPostSelect,
         user: req.user.id,
       });
       console.log("Post has been added!");

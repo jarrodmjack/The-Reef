@@ -10,6 +10,13 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+#indexBody{
+    background-image: url('../imgs/underwater-scene-with-tropical-fish-snorkeling-in-royalty-free-image-1590076352.jpg');
+    /* background-position: center; */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 div{
     font-family: 'Roboto', sans-serif;
 }
@@ -18,9 +25,23 @@ p, h1, h2, h3, h4, h5, h6, span{
     font-family: 'Roboto', sans-serif;
 }
 
+.button{
+    background-color: rgb(207, 147, 95);
+}
 
+/* a.button {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 1rem;
+    width: 300px;
+    border-radius: 8px;
+    text-align: center;
+} */
 
-
+a.button:hover{
+    background-color: sandybrown;
+}
 
 /* HEADER */
 
@@ -53,6 +74,14 @@ p, h1, h2, h3, h4, h5, h6, span{
 
 
 
+/* INDEX PAGE */
+#indexLogoTitle{
+    font-size: 40px;
+    font-family: "Dancing Script", 'Roboto', sans-serif;
+}
+
+
+
 /* FEED */
 
 .feedContainer{
@@ -72,14 +101,6 @@ p, h1, h2, h3, h4, h5, h6, span{
     justify-content: space-between;
 }
 
-.profileSquareOnFeed{
-    height: 300px;
-    width: 300px;
-    background-color: #1A1A1B;
-    position: relative;
-    right: 300px;
-}
-
 .feedBody{
     display: flex;
     justify-content: center;
@@ -88,7 +109,7 @@ p, h1, h2, h3, h4, h5, h6, span{
 
 
 .feedPost{
-    width: 1100px;
+    width: 700px;
     /* height: 850px; */
     background-color: #1A1A1B;
     display: flex;

@@ -12,6 +12,7 @@
         </div>
         <div class="feedContentContainer">
           <div>
+            <span class="feedPostType"><%=posts[i].typeOfPost %></span>
             <h2 id="feedTitle"><%=posts[i].title %></h2>
           </div>
           <div class="feedImgContainer">
@@ -33,9 +34,6 @@
         </div>
       </div>
       <% } %>
-  </div>
-  <div class="profileSquareOnFeed">
-    <h1>Create your own post</h1>
   </div>
 </section>
   <%- include('partials/footer') -%>
