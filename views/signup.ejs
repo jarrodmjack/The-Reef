@@ -1,46 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Reef</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/imgs/favicon-32x32.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:ital,wght@0,400;0,900;1,400&display=swap"
+    rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+</head>
+
 <body class="signupBody">
-  <%- include('partials/header') -%>
-
-<div class="signupWrapper">
-  <div id="signupContainer">
-  <main class="container">
-        <div class="row justify-content-center">
-            <section class="">
-                <% if (locals.messages.errors) { %>
-                    <% messages.errors.forEach( el => { %>
-                        <div class="alert alert-danger"><%= el.msg %></div>
-                    <% }) %>    
-                <% } %>
-                <% if (locals.messages.info) { %>
-                    <% messages.info.forEach( el => { %>
-                        <div class="alert alert-info"><%= el.msg %></div>
-                    <% }) %>    
-                <% } %>
-                <form action="/signup" method="POST">
-                    <div class="mb-3">
-                        <label for="userName" class="label form-label">User Name</label>
-                        <input type="text" class="form-control" id="userName" name="userName">
-                      </div>
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="label form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
-                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="password" class="label form-label">Password</label>
-                      <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="label form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                      </div>
-                    <button type="submit" class="signUpButton button">Sign up</button>
-                  </form>
-            </section>
+  <% if(user) { %>
+    <%- include('partials/header') -%>
+      <%} else {%>
+        <div class="signupLoginLogoContainer">
+          <h1 id="indexLogoTitle">The Reef</h1>
         </div>
-    </main>
-  </div>
+        <%}%>
+          <div class="signupWrapper">
+            <div id="signupContainer">
+              <main class="container">
+                <div class="row justify-content-center">
+                  <section class="">
+                    <% if (locals.messages.errors) { %>
+                      <% messages.errors.forEach( el=> { %>
+                        <div class="alert alert-danger">
+                          <%= el.msg %>
+                        </div>
+                        <% }) %>
+                          <% } %>
+                            <% if (locals.messages.info) { %>
+                              <% messages.info.forEach( el=> { %>
+                                <div class="alert alert-info">
+                                  <%= el.msg %>
+                                </div>
+                                <% }) %>
+                                  <% } %>
+                                    <form action="/signup" method="POST">
+                                      <div class="mb-3">
+                                        <label for="userName" class="label form-label">User Name</label>
+                                        <input type="text" class="form-control" id="userName" name="userName">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="label form-label">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1"
+                                          aria-describedby="emailHelp" name="email">
+                                        <div id="emailHelp" class="form-text">We'll never share your email with anyone
+                                          else.</div>
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="password" class="label form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="confirmPassword" class="label form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="confirmPassword"
+                                          name="confirmPassword">
+                                      </div>
+                                      <button type="submit" class="signUpButton button">Sign up</button>
+                                    </form>
+                                    <h3>Already have an account? <a href="/login">Login</a></h3>
+                  </section>
+                </div>
+              </main>
+            </div>
 
-</div>
-<%- include('partials/footer') -%>
+          </div>
+          <%- include('partials/footer') -%>
 </body>
