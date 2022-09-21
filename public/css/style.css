@@ -10,12 +10,6 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-#indexBody{
-    background-image: url('../imgs/underwater-scene-with-tropical-fish-snorkeling-in-royalty-free-image-1590076352.jpg');
-    /* background-position: center; */
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 
 div{
     font-family: 'Roboto', sans-serif;
@@ -26,21 +20,24 @@ p, h1, h2, h3, h4, h5, h6, span{
 }
 
 .button{
-    background-color: rgb(207, 147, 95);
-}
-
-/* a.button {
+    font-size: 1.4rem;
     color: white;
     text-decoration: none;
-    font-size: 20px;
-    padding: 1rem;
-    width: 300px;
+    font-weight: 500;
+    padding: 1rem 3rem;
+    background-color: #2F4858;
     border-radius: 8px;
-    text-align: center;
-} */
+    border: none;
+}
 
-a.button:hover{
-    background-color: sandybrown;
+.button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #006983;
+}
+
+.label{
+    font-size: 1.4rem;
 }
 
 /* HEADER */
@@ -60,11 +57,22 @@ a.button:hover{
     color: white;
     text-decoration: none;
 }
-
+/* 
 .myProfileLink{
     background-color: #1A1A1B;
     font-size: 20px;
     padding: 1rem 1.5rem;
+} */
+
+.button > a{
+    color: white;
+    text-decoration: none;
+}
+
+.button > a:hover{
+    background-color: #006983;
+    color: white;
+    transition: .2s ease;
 }
 
 .myProfileLink{
@@ -75,12 +83,95 @@ a.button:hover{
 
 
 /* INDEX PAGE */
+
+#indexBody{
+    background-image: url('../imgs/planted2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-blend-mode: darken;
+    background-color: rgba(168, 167, 167, 0.5);
+}
+
 #indexLogoTitle{
-    font-size: 40px;
+    font-size: 4.2rem;
     font-family: "Dancing Script", 'Roboto', sans-serif;
 }
 
+#indexContainer{
+    height: 30rem;
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 75px;
+    background-color: rgba(35, 45, 35, 0.599);
+}
 
+.indexLoginContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+.indexLoginContainer > a{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 1rem 3rem;
+    background-color: #2F4858;
+    border-radius: 8px;
+}
+
+.indexLoginContainer > a:hover{
+    background-color: #006983;
+    color: white;
+    transition: .2s ease;
+}
+
+/* SIGNUP PAGE */
+
+#emailHelp{
+    color: white;
+    font-size: 14px;
+}
+
+.signupBody{
+    background-image: url('../imgs/planted2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-blend-mode: darken;
+    background-color: rgba(168, 167, 167, 0.5);
+}
+
+#signupContainer{
+    margin-top: 130px;
+    height: 30rem;
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 75px;
+    background-color: rgba(35, 45, 35, 0.599);
+    padding: 4rem 4rem;
+}
+
+.signupWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signUpButton{
+    width: 100%;
+}
 
 /* FEED */
 
