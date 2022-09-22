@@ -1,42 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bootstrap demo</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/imgs/favicon-32x32.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:ital,wght@0,400;0,900;1,400&display=swap"
+    rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+</head>
 <%- include('partials/header') -%>
-<section class="feedBody">
-  <div class="feedContainer container">
-    <% for(let i=0; i<posts.length; i++) {%>
-      <div class="feedPost">
-        <div class="likesBar">
-          <div class="likesArrowsContainer">
-            <ion-icon class="voteArrow" name="arrow-up-outline"></ion-icon>
-          <span>10,234</span>
-          <ion-icon class="voteArrow" name="arrow-down-outline"></ion-icon>
-        </div>
-        </div>
-        <div class="feedContentContainer">
-          <div>
-            <span class="feedPostType"><%=posts[i].typeOfPost %></span>
-            <h2 id="feedTitle"><%=posts[i].title %></h2>
-          </div>
-          <div class="feedImgContainer">
-            <a class="" href="/post/<%= posts[i]._id%>">
-              <img class="feedImg" src="<%= posts[i].image%>">
-            </a>
-          </div>
-          <div class="commentsAndShare">
-            <div class="feedIconContainer">
-              <ion-icon class="feedIcon" name="chatbox-outline"></ion-icon>
-            <h4>32 Comments</h4>
-            </div>
-            <div class="feedIconContainer">
-              <h4>Share</h4>
-              <ion-icon 
-              class="feedIcon" name="share-social-outline"></ion-icon>
+  <section class="overflow-hidden">
+    <section class="container">
+
+    
+
+
+      <!-- testing layout  -->
+      <a class="pageLinkBox" href="/general-discussion">
+        <section class="row mb-3">
+          <div class="col-9">
+            <div class="p-3 border bg-dark">
+              <div class="row-cols-auto mb-3">
+                <span class="tag">Admin</span>
+              </div>
+              <div class="row-cols-auto mb-3">
+                <h1>General Discussion</h1>
+              </div>
+              <div>
+                <p>General Aquarium Discussion. Discuss anything aquatic!</p>
+              </div>
+
             </div>
           </div>
+        </section>
+      </a>
+
+
+      <a class="pageLinkBox" href="buy-sell-trade/aquatic-plants">
+      <section class="row mb-3">
+        <div class="col-9">
+          <div class="p-3 border bg-dark">
+            <div class="row-cols-auto mb-3">
+              <span class="tag">Admin</span>
+            </div>
+            <div class="row-cols-auto mb-3">
+              <h1>Aquatic Plants</h1>
+            </div>
+            <div>
+              <p>Buy/Sell/Trade aquatic plants</p>
+            </div>
+
+          </div>
         </div>
-      </div>
-      <% } %>
-  </div>
-</section>
+      </section>
+      </a>
+
+      <a class="pageLinkBox" href="buy-sell-trade/live-fish">
+      <section class="row mb-3">
+        <div class="col-9">
+          <div class="p-3 border bg-dark">
+            <div class="row-cols-auto mb-3">
+              <span class="tag">Admin</span>
+            </div>
+            <div class="row-cols-auto mb-3">
+              <h1>Live Fish</h1>
+            </div>
+            <div>
+              <p>Buy/Sell/Trade live fish</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      </a>
+
+      <a class="pageLinkBox" href="buy-sell-trade/offer-services">
+      <section class="row mb-3">
+        <div class="col-9">
+          <div class="p-3 border bg-dark">
+            <div class="row-cols-auto mb-3">
+              <span class="tag">Admin</span>
+            </div>
+            <div class="row-cols-auto mb-3">
+              <h1>Offer Services</h1>
+            </div>
+            <div>
+              <p>Are you an aquascaper? Maybe a breeder? Offer your services here</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      </a>
+
+
+    </section>
+  </section>
   <%- include('partials/footer') -%>
 
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

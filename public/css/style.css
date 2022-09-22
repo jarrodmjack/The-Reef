@@ -5,8 +5,8 @@
 }
 
 body{
-    background-color: #030303;
     color: white;
+    background-color: #030303;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -181,90 +181,31 @@ p, h1, h2, h3, h4, h5, h6, span{
 
 /* FEED */
 
-.feedContainer{
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
-    font-family: 'Roboto', sans-serif;
-}
 
-.feedContentContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.feedBody{
-    display: flex;
-    justify-content: center;
+.box{
+    border: 1px solid rgb(42, 103, 131);
+    background-color: rgb(23, 77, 96);
 }
 
 
 
-.feedPost{
-    width: 700px;
-    /* height: 850px; */
-    background-color: #1A1A1B;
-    display: flex;
+.pageLinkBox{
+    color: white;
+    text-decoration: none;
 }
 
-.feedImgContainer{
-    width: 100%;
-    height: 80%;
-    overflow: hidden;
+.pageLinkBox:hover{
+    color: white;
+    opacity: .8;
 }
 
-.likesBar{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50px;
-    width: 125px;
-    background-color: #151515;
+
+.tag{
+   padding: .3rem 1rem;
+   background-color: rgba(170, 128, 50, 0.687);
+   border-radius: 20px;
 }
 
-.likesArrowsContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
+.buyTag{
+    background-color: #006983;
 }
-
-.feedImg{
-   width: 100%;
-    /* height: 100%; */
-}
-
-.voteArrow{
-    font-size: 24px;
-}
-
-#feedTitle{
-    font-size: 25px;
-    margin-top: 20px;
-    margin-left: 20px;
-}
-
-.feedIcon{
-    font-size: 24px;
-}
-
-.commentsAndShare{
-    /* border: 1px solid red; */
-    background-color: #151515;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.feedIconContainer{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
