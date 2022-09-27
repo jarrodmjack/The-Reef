@@ -1,16 +1,68 @@
-<%- include('partials/header') -%>
-  <div class="container">
-    <div class="row justify-content-center mt-5">
-      <div class="col-6">
+
+<!-- NAVBAR -->
+<div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+      </label>
+      <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a>Item 1</a></li>
+        <li tabindex="0">
+          <a class="justify-between">
+            Parent
+            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+            </svg>
+          </a>
+          <ul class="p-2">
+            <li><a>Submenu 1</a></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+        </li>
+        <li><a>About</a></li>
+      </ul>
+    </div>
+    <a href="/feed" class="btn btn-ghost normal-case text-xl">The Reef</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal p-0">
+      <li><a href="/feed">General Discussion</a></li>
+      <li><a href="/buy-sell-trade/live-fish">Fish</a></li>
+      <li><a href="/buy-sell-trade/live-plants">Plants</a></li>
+      <li><a href="/buy-sell-trade/offer-services">Services</a></li>
+      <!-- <li tabindex="0">
+        <a>
+          Dropdown
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+        </a>
+        <ul class="p-2">
+          <li><a>Submenu 1</a></li>
+          <li><a>Submenu 2</a></li>
+        </ul>
+      </li> -->
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <a href="/feed" class="btn btn-active text-white bg-lime-600 hover:bg-lime-500">Back to home</a>
+  </div>
+</div>
+
+
+  
+    <div class="postPageContainer">
+      <div class="bg-base-100 postContentContainer">
         <h2>
           <%= post.title %>
         </h2>
-        <img class="img-fluid" src="<%= post.image%>" />
-        <div class="row justify-content-between">
+        <img class="img" src="<%= post.image%>" />
+        <div class="postActionsContainer">
           <form class="col-1" action="/post/likePost/<%= post.id %>?_method=PUT" method="POST">
             <button class="btn btn-primary fa fa-heart" type="submit"></button>
           </form>
-          <h3 class="col-3">Likes: <%= post.likes %>
+          <h3 class="col-3">Bubbles: <%= post.likes %>
           </h3>
           <%if(post.user==user.id){ %>
             <form action="/post/deletePost/<%=post.id%>?_method=DELETE" method="POST" class="col-3">
@@ -18,37 +70,42 @@
             </form>
             <%}%>
         </div>
-      </div>
+   
       <div class="col-3 mt-5">
         <p>
           <%= post.caption %>
         </p>
       </div>
-      <h2>Add a Comment</h2>
-      <div>
-        <form action="/comment/createComment/<%=post.id%>" method="POST" class="col-3">
-          <input type="text" name="comment" required>
-          <button class="btn btn-primary" type="submit">Comment</button>
-        </form>
-      </div>
-      <ul>
-        <% for (let i=0; i < comments.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <%=comments[i].comment%>
-              <%if(comments[i].user==user.id){ %>
-                <form action="/comment/deleteComment/<%=comments[i]._id%>?_method=DELETE" method="POST" class="col-3">
-                  <button class="btn btn-primary fa fa-trash" type="submit"></button>
-                </form>
-                <%}%>
-                  <%}%>
-          </li>
-      </ul>
-
       <div class="col-6 mt-5">
         <a class="btn btn-primary" href="/profile">Return to Profile</a>
         <a class="btn btn-primary" href="/feed">Return to Feed</a>
       </div>
     </div>
-  </div>
+
+      <div class="makeCommentContainer">
+        <h2>Add a Comment</h2>
+        <div>
+          <form action="/comment/createComment/<%=post.id%>" method="POST" class="col-3">
+            <input type="text" name="comment" required>
+            <button class="btn btn-primary" type="submit">Comment</button>
+          </form>
+        </div>
+        <ul>
+          <% for (let i=0; i < comments.length; i++) {%>
+            <li class="col-6 justify-content-between mt-5">
+              <%=comments[i].comment%>
+                <%if(comments[i].user==user.id){ %>
+                  <form action="/comment/deleteComment/<%=comments[i]._id%>?_method=DELETE" method="POST" class="col-3">
+                    <button class="btn btn-primary fa fa-trash" type="submit"></button>
+                  </form>
+                  <%}%>
+                    <%}%>
+            </li>
+        </ul>
+      </div>
+
+
+    </div>
+
 
   <%- include('partials/footer') -%>
