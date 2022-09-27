@@ -235,6 +235,14 @@ p, h1, h2, h3, h4, h5, h6, span{
 
 
 /* INDEX PAGE + BASE STYLES */
+.bg-base-100,
+.input,
+.textarea,
+.bg-gray-50,
+input#file-upload-button{
+    background-color: #151414 !important;
+}
+
 
 .btn-primary{
     background-color: green;
@@ -259,6 +267,27 @@ p, h1, h2, h3, h4, h5, h6, span{
     border-radius: 10px;
 }
 
+.banner{
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner h2{
+    font-size: 3rem;
+}
+
+.bannerGlassBkg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 150px;
+    background-color: rgb(3, 3, 3, .6);
+}
 
 /* Card styles */
 
@@ -328,6 +357,9 @@ p, h1, h2, h3, h4, h5, h6, span{
     height: 50px;
 }
 
+.feedContentCard{
+    width: 50%;
+}
 
 
 /* Live fish feed */
@@ -423,8 +455,9 @@ input:placeholder{
 }
 
 .postCaptionContainer{
-    background-color: #585858;
+    background-color: #151414;
     max-width: 50%;
+    margin: 1rem 0;
 }
 
 .postActionsContainer{
