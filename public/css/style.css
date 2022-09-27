@@ -404,21 +404,75 @@ input:placeholder{
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* justify-content: center; */
 }
 
 .postContentContainer .img{
-    width: 65%;
+    /* width: 65%; */
     margin: 0;
+    /* align-self: center; */
+}
+
+.returnContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 3rem;
+}
+
+.postCaptionContainer{
+    background-color: #585858;
+    max-width: 50%;
 }
 
 .postActionsContainer{
     display: flex;
-    gap: 10rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    display: flex;
+    width: 100%;
 }
 
+.makeCommentContainer{
+    width: 30%;
+    margin: 3rem 0;
+}
 
+.makeCommentContainer form {
+    display: flex;
+    flex-direction: column;
+}
 
+.makeCommentContainer textarea {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+}
 
+.makeCommentContainer button {
+    border-radius: 0 0 10px 10px;
+}
+
+.postCommentsContainer{
+    margin-bottom: 3rem;
+    border-radius: 8px;
+    width: 40%;
+}
+
+.commentContainer{
+    /* border: 1px solid orange; */
+    padding: 2rem;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+}
+
+.commentContainer:last-child{
+    border: none;
+}
 
 
 
@@ -457,4 +511,16 @@ input:placeholder{
         width: 100%;
     }
 
+}
+
+
+/* FEED MEDIA QUERIES */
+
+@media all and (max-width:800px){
+
+    .feedContainerCard{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
 }
