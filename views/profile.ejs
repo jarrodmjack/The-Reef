@@ -1,56 +1,150 @@
-<%- include('partials/header') -%>
-<div class="container">
-  <div class="row mt-5">
-      <div class="col-6">
-          <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-          </div>
-          <div class="mt-5">
-            <h2>Add a post</h2>
-            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-              </div>
-              <div class="select">
-                <select name="typeOfPostSelect" id="typeOfPostSelect">
-                  <option value="Buy">Buy</option>
-                  <option value="Sell">Sell</option>
-                  <option value="Trade">Trade</option>
-                  <option value="Offer Services">Offer Services</option>
-                  <option value="Looking For Services">Looking For Services</option>
-
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="caption" class="form-label">Text</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
-              </div>
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-            </form>
-          </div>
-      </div>
-      <div class="col-6">
-        <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
-            </a>
-          </li>
-        <% } %>
-        </ul>
-        <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/feed">Return to Feed</a>
-        </div>  
-      </div>  
+<!-- NAVBAR -->
+<div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+      </label>
+      <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a>Item 1</a></li>
+        <li tabindex="0">
+          <a class="justify-between">
+            Parent
+            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+            </svg>
+          </a>
+          <ul class="p-2">
+            <li><a>Submenu 1</a></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+        </li>
+        <li><a>About</a></li>
+      </ul>
     </div>
+    <a href="/feed" class="btn btn-ghost normal-case text-xl">The Reef</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal p-0">
+      <li><a href="/feed">General Discussion</a></li>
+      <li><a href="/buy-sell-trade/live-fish">Fish</a></li>
+      <li><a href="/buy-sell-trade/live-plants">Plants</a></li>
+      <li><a href="/buy-sell-trade/offer-services">Services</a></li>
+      <!-- <li tabindex="0">
+        <a>
+          Dropdown
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+        </a>
+        <ul class="p-2">
+          <li><a>Submenu 1</a></li>
+          <li><a>Submenu 2</a></li>
+        </ul>
+      </li> -->
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <a href="/feed" class="btn btn-active text-white bg-lime-600 hover:bg-lime-500">Back to home</a>
   </div>
 </div>
+
+<!-- MAIN PROFILE CONTENT -->
+
+      <div>
+        <p><strong>User Name</strong>: <%= user.userName %>
+        </p>
+        <p><strong>Email</strong>: <%= user.email %>
+        </p>
+        <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+      </div>
+
+      <div class="profileContentContainer">
+        <div class="p-4	profileFormContainer shadow-2xl bg-base-100">
+          <form class="" id="profileForm" action="/post/createPost" enctype="multipart/form-data" method="POST">
+            <div class="form-control">
+
+              <div class="form-control w-full max-w-xs">
+                <label class="label">
+                  <span class="label-text">Title of post</span>
+                </label>
+                <input name="title" type="text" placeholder="What is the title of your post?" class="input input-bordered w-full max-w-xs" />
+              </div>
+            </div>
+            <div class="selectContainer">
+              <label for="typeOfPostSelect" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select an option</label>
+              <select  name="typeOfPostSelect" id="typeOfPostSelect"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option disabled selected>Choose an option</option>
+                <option value="Buy">Buy</option>
+                <option value="Sell">Sell</option>
+                <option value="Trade">Trade</option>
+                <option value="Offer Services">Offer Services</option>
+                <option value="Looking For Services">Looking For Services</option>
+              </select>
+
+              <label for="postCategory" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select a category</label>
+              <select  name="postCategory" id="postCategory"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option value="General">General Discussion</option>
+                <option value="Fish">Fish</option>
+                <option value="Plants">Plants</option>
+                <option value="Services">Services</option>
+              </select>
+            </div>
+            <div class="">
+              <textarea id="caption" class="textarea" placeholder="Information goes here" name="caption"></textarea>
+            </div>
+            <div class="">
+              <label for="imgUpload" class="form-label">Image</label>
+              <input type="file" class="form-control" id="imageUpload" name="file">
+            </div>
+            <button type="submit" class="btn bg-lime-600 text-white" value="Upload">Submit</button>
+          </form>
+      </div>
+
+    <div class="profileFeedContainer fishContentContainer">
+      <% for(let i=0; i < posts.length; i++) { %>
+        <a href="/post/<%= posts[i].id %>">
+          <div class="profileFeedCard feedCard">
+            <div class="cardTextContainer">
+              <h1>
+                <% if(posts[i].typeOfPost==='Sell' ) { %>
+                  <span class="sellTag tag text-left">
+                    <%=posts[i].typeOfPost %>
+                  </span>
+                  <%} else if(posts[i].typeOfPost==='Buy' ) {%>
+                    <span class="buyTag tag text-left">
+                      <%=posts[i].typeOfPost %>
+                    </span>
+                    <%} else if(posts[i].typeOfPost==='Trade' ) {%>
+                      <span class="tradeTag tag text-left">
+                        <%=posts[i].typeOfPost %>
+                      </span>
+                      <%} else if(posts[i].typeOfPost==='Looking For Services' ) {%>
+                        <span class="servicesTag tag text-left">
+                          <%=posts[i].typeOfPost %>
+                        </span>
+                        <%} %>
+                          <%= posts[i].title %>
+              </h1>
+
+              <p>
+                <%= posts[i].caption %>
+              </p>
+
+            </div>
+            <div class="cardImgContainer">
+              <img class="cardImg" src="<%= posts[i].image %>" alt="">
+            </div>
+          </div>
+        </a>
+        <% } %>
+    </div>
+  </div>
+
+
+
+
+
 <%- include('partials/footer') -%>

@@ -5,8 +5,14 @@ const Comment = require("../models/Comment");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      const posts = await Post.find({ user: req.user.id }).sort({ createdAt: "desc" });
+      // res.render("profile.ejs", { posts: posts, user: req.user });
+      res.render('profile', {
+        posts: posts,
+        user: req.user,
+        layout: './layouts/mainLayout',
+    },
+    )
     } catch (err) {
       console.log(err);
     }
@@ -14,7 +20,8 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
+      // console.log(posts)
+      res.render("feed", { posts: posts });
     } catch (err) {
       console.log(err);
     }
@@ -31,8 +38,8 @@ module.exports = {
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary
-      const typeOfPost = req.body.typeOfPostSelect
-      console.log(typeOfPost)
+      // const typeOfPost = req.body.typeOfPostSelect
+      // console.log(typeOfPost)
       const result = await cloudinary.uploader.upload(req.file.path);
 
       await Post.create({
@@ -42,6 +49,7 @@ module.exports = {
         caption: req.body.caption,
         likes: 0,
         typeOfPost: req.body.typeOfPostSelect,
+        postCategory: req.body.postCategory,
         user: req.user.id,
       });
       console.log("Post has been added!");

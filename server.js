@@ -12,6 +12,9 @@ const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const commentRoutes = require("./routes/comments");
 const buySellTradeRoutes = require("./routes/buySellTrade");
+const expressLayouts = require('express-ejs-layouts')
+
+
 
 //Use .env file in config folder
 require("dotenv").config({ path: "../../.env" });
@@ -21,6 +24,12 @@ require("./config/passport")(passport);
 
 //Connect To Database
 connectDB();
+
+//Setting up EJS Templating Engine
+app.use(expressLayouts)
+
+//Sets up default layout
+app.set('layout', './layouts/mainLayout')
 
 //Using EJS for views
 app.set("view engine", "ejs");

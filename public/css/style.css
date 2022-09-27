@@ -200,12 +200,200 @@ p, h1, h2, h3, h4, h5, h6, span{
 }
 
 
-.tag{
-   padding: .3rem 1rem;
-   background-color: rgba(170, 128, 50, 0.687);
-   border-radius: 20px;
+
+
+
+
+/* EJS LAYOUTS W/ TAILWIND */
+
+
+
+
+
+/* SCROLLBAR */
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #050505 #545454;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #545454;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #050505;
+    border-radius: 10px;
+    border: 3px none #ffffff;
+  }
+
+
+/* INDEX PAGE + BASE STYLES */
+
+.btn-primary{
+    background-color: green;
 }
 
-.buyTag{
-    background-color: #006983;
+.btn{
+    color:white ;
+}
+
+.green{
+    background-color: rgb(35, 149, 35);
+    outline: none;
+    border: none;
+}
+
+#heroContainer{
+    background-image: url('../imgs/planted2.jpg');
+}
+
+.hero-content{
+    background-color: rgba(29, 29, 30, 0.591);
+    border-radius: 10px;
+}
+
+
+/* Card styles */
+
+.feedCard{
+    background-color: #202727;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid blue; */
+    padding: .5rem 1rem;
+    margin: 0 0 2rem 0;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgb(112, 112, 112);
+}
+
+.feedCard:hover{
+    border: 1px solid white;
+}
+
+.cardImgContainer{
+    width: 175px;
+    height: 100px;
+    margin-right: 1rem;
+}
+
+.cardImg{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.cardTextContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 2rem;
+}
+
+
+/* FEED PAGE */
+
+
+.tag{
+    padding: .3rem 1rem;
+    background-color: rgba(209, 162, 32, 0.687);
+    border-radius: 20px;
+ }
+ 
+ .buyTag{
+    background-color: #39aaa8;
+ }
+
+ .sellTag{
+    background-color: #23ac3f;
+}
+
+.tradeTag{
+    background-color: #6d3a7b;
+}
+
+.servicesTag{
+    background-color: #c85d28;
+}
+
+.gapper{
+    height: 50px;
+}
+
+
+
+/* Live fish feed */
+
+
+
+.fishContentContainer{
+    width: 75%;
+    margin: 0 auto;
+}
+
+
+
+/* Profile Styles */
+
+.profileFeedContainer{
+    /* border: 1px solid red; */
+    width: 60%;
+}
+
+.profileContentContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+input{
+    color: black;
+}
+
+input:placeholder{
+    color: black;
+}
+
+.profileFormContainer{
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    align-self: flex-start;
+}
+
+.profileFormContainer form > *{
+    width: 100%;
+}
+
+#caption{
+    width: 100%;
+    margin: 10px 0;
+}
+
+
+
+.selectContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* PROFILE MEDIA QUERIES */
+
+@media all and (max-width: 800px){
+
+    .profileFeedContainer{
+        width: 100%;
+    }
+
 }
