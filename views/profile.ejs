@@ -45,107 +45,110 @@
     </ul>
   </div>
   <div class="navbar-end">
-    <a href="/feed" class="btn btn-active text-white bg-lime-600 hover:bg-lime-500">Back to home</a>
+    <a href="/feed" class="btn btn-active text-white btn hover:btn">Back to home</a>
   </div>
 </div>
 
 <!-- MAIN PROFILE CONTENT -->
 
-      <div>
-        <p><strong>User Name</strong>: <%= user.userName %>
-        </p>
-        <p><strong>Email</strong>: <%= user.email %>
-        </p>
-        <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+<div>
+  <p><strong>User Name</strong>: <%= user.userName %>
+  </p>
+  <p><strong>Email</strong>: <%= user.email %>
+  </p>
+  <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+</div>
+
+<div class="profileContentContainer flex justify-between min-h-screen">
+  <div class="p-4	profileFormContainer shadow-2xl bg-base-100">
+    <form class="" id="profileForm" action="/post/createPost" enctype="multipart/form-data" method="POST">
+      <div class="form-control">
+
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
+            <span class="label-text">Title of post</span>
+          </label>
+          <input required name="title" type="text" placeholder="What is the title of your post?"
+            class="input input-bordered w-full max-w-xs" />
+        </div>
       </div>
+      <div class="selectContainer">
+        <label for="typeOfPostSelect" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select an
+          option</label>
+        <select required name="typeOfPostSelect" id="typeOfPostSelect"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option disabled selected>Choose an option</option>
+          <option value="Buy">Buy</option>
+          <option value="Sell">Sell</option>
+          <option value="Trade">Trade</option>
+          <option value="Offer Services">Offer Services</option>
+          <option value="Looking For Services">Looking For Services</option>
+        </select>
 
-      <div class="profileContentContainer">
-        <div class="p-4	profileFormContainer shadow-2xl bg-base-100">
-          <form class="" id="profileForm" action="/post/createPost" enctype="multipart/form-data" method="POST">
-            <div class="form-control">
-
-              <div class="form-control w-full max-w-xs">
-                <label class="label">
-                  <span class="label-text">Title of post</span>
-                </label>
-                <input name="title" type="text" placeholder="What is the title of your post?" class="input input-bordered w-full max-w-xs" />
-              </div>
-            </div>
-            <div class="selectContainer">
-              <label for="typeOfPostSelect" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select an option</label>
-              <select  name="typeOfPostSelect" id="typeOfPostSelect"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option disabled selected>Choose an option</option>
-                <option value="Buy">Buy</option>
-                <option value="Sell">Sell</option>
-                <option value="Trade">Trade</option>
-                <option value="Offer Services">Offer Services</option>
-                <option value="Looking For Services">Looking For Services</option>
-              </select>
-
-              <label for="postCategory" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select a category</label>
-              <select  name="postCategory" id="postCategory"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="General">General Discussion</option>
-                <option value="Fish">Fish</option>
-                <option value="Plants">Plants</option>
-                <option value="Services">Services</option>
-              </select>
-            </div>
-            <div class="">
-              <textarea id="caption" class="textarea" placeholder="Information goes here" name="caption"></textarea>
-            </div>
-            <div class="">
-              <label for="imgUpload" class="form-label">Image</label>
-              <input type="file" class="form-control" id="imageUpload" name="file">
-            </div>
-            <button type="submit" class="btn bg-lime-600 text-white" value="Upload">Submit</button>
-          </form>
+        <label for="postCategory" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select a
+          category</label>
+        <select required name="postCategory" id="postCategory"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option value="General">General Discussion</option>
+          <option value="Fish">Fish</option>
+          <option value="Plants">Plants</option>
+          <option value="Services">Services</option>
+        </select>
       </div>
-
-    <div class="profileFeedContainer fishContentContainer">
-      <% for(let i=0; i < posts.length; i++) { %>
-        <a href="/post/<%= posts[i].id %>">
-          <div class="profileFeedCard feedCard">
-            <div class="cardTextContainer">
-              <h1>
-                <% if(posts[i].typeOfPost==='Sell' ) { %>
-                  <span class="sellTag tag text-left">
-                    <%=posts[i].typeOfPost %>
-                  </span>
-                  <%} else if(posts[i].typeOfPost==='Buy' ) {%>
-                    <span class="buyTag tag text-left">
-                      <%=posts[i].typeOfPost %>
-                    </span>
-                    <%} else if(posts[i].typeOfPost==='Trade' ) {%>
-                      <span class="tradeTag tag text-left">
-                        <%=posts[i].typeOfPost %>
-                      </span>
-                      <%} else if(posts[i].typeOfPost==='Looking For Services' ) {%>
-                        <span class="servicesTag tag text-left">
-                          <%=posts[i].typeOfPost %>
-                        </span>
-                        <%} %>
-                        
-                          <%= posts[i].title %>
-              </h1>
-
-              <p>
-                <%= posts[i].caption %>
-              </p>
-
-            </div>
-            <div class="cardImgContainer">
-              <img class="cardImg" src="<%= posts[i].image %>" alt="">
-            </div>
-          </div>
-        </a>
-        <% } %>
-    </div>
+      <div class="">
+        <textarea id="caption" class="textarea" placeholder="Information goes here" name="caption"></textarea>
+      </div>
+      <div class="">
+        <label for="imgUpload" class="form-label">Upload Image</label>
+        <input type="file" class="form-control" id="imageUpload" name="file">
+      </div>
+      <button type="submit" class="btn btn text-white" value="Upload">Submit</button>
+    </form>
   </div>
 
 
 
+  <div class="profileFeedContainer fishContentContainer">
 
 
+
+    <% for(let i=0; i < posts.length; i++) { %>
+      <a href="/post/<%= posts[i].id %>">
+        <div class="profileFeedCard feedCard">
+          <div class="cardTextContainer">
+            <h1>
+              <% if(posts[i].typeOfPost==='Sell' ) { %>
+                <span class="sellTag tag text-left">
+                  <%=posts[i].typeOfPost %>
+                </span>
+                <%} else if(posts[i].typeOfPost==='Buy' ) {%>
+                  <span class="buyTag tag text-left">
+                    <%=posts[i].typeOfPost %>
+                  </span>
+                  <%} else if(posts[i].typeOfPost==='Trade' ) {%>
+                    <span class="tradeTag tag text-left">
+                      <%=posts[i].typeOfPost %>
+                    </span>
+                    <%} else if(posts[i].typeOfPost==='Looking For Services' ) {%>
+                      <span class="servicesTag tag text-left">
+                        <%=posts[i].typeOfPost %>
+                      </span>
+                      <%} %>
+
+                        <%= posts[i].title %>
+            </h1>
+
+            <p>
+              <%= posts[i].caption %>
+            </p>
+
+          </div>
+          <div class="cardImgContainer">
+            <img class="cardImg" src="<%= posts[i].image %>" alt="">
+          </div>
+        </div>
+      </a>
+      <% } %>
+  </div>
+</div>
 <%- include('partials/footer') -%>

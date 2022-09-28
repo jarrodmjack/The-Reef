@@ -1,559 +1,195 @@
-*{
-    box-sizing: border-box;
-    font-size: 62.5%;
-    font-family: 'Roboto', sans-serif;
-}
-
-body{
-    color: white;
-    background-color: #030303;
-    font-family: 'Roboto', sans-serif;
-}
-
-
-div{
-    font-family: 'Roboto', sans-serif;
-}
-
-p, h1, h2, h3, h4, h5, h6, span{
-    font-family: 'Roboto', sans-serif;
-}
-
-.button{
-    font-size: 1.4rem;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 1rem 3rem;
-    background-color: #2F4858;
-    border-radius: 8px;
-    border: none;
-}
-
-.button:hover{
-    cursor: pointer;
-    color: white;
-    background-color: #006983;
-}
-
-.label{
-    font-size: 1.4rem;
-}
-
-/* HEADER */
-
-.header{
-    height: 100px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-family: 'Roboto', sans-serif;
-}
-
-.header h1 > a{
-    font-size: 39px;
-    font-family: 'Dancing Script';
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-}
-/* 
-.myProfileLink{
-    background-color: #1A1A1B;
-    font-size: 20px;
-    padding: 1rem 1.5rem;
-} */
-
-.button > a{
-    color: white;
-    text-decoration: none;
-}
-
-.button > a:hover{
-    background-color: #006983;
-    color: white;
-    transition: .2s ease;
-}
-
-.myProfileLink{
-    text-decoration: none;
-    color: white;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
 
-/* INDEX PAGE */
-
-#indexBody{
-    background-image: url('../imgs/planted2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-blend-mode: darken;
-    background-color: rgba(168, 167, 167, 0.5);
-}
-
-#indexLogoTitle{
-    font-size: 4.2rem;
-    font-family: "Dancing Script", 'Roboto', sans-serif;
-}
-
-#indexContainer{
-    height: 30rem;
-    width: 30rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 75px;
-    background-color: rgba(35, 45, 35, 0.599);
-}
-
-.indexLoginContainer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-}
-
-.indexLoginContainer > a{
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 1rem 3rem;
-    background-color: #2F4858;
-    border-radius: 8px;
-}
-
-.indexLoginContainer > a:hover{
-    background-color: #006983;
-    color: white;
-    transition: .2s ease;
-}
-
-/* SIGNUP PAGE */
-
-#emailHelp{
-    color: white;
-    font-size: 14px;
-}
-
-.signupBody{
-    background-image: url('../imgs/planted2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-    background-blend-mode: darken;
-    background-color: rgba(168, 167, 167, 0.5);
-}
-
-#signupContainer{
-    margin-top: 130px;
-    height: 30rem;
-    width: 30rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 75px;
-    background-color: rgba(35, 45, 35, 0.599);
-    padding: 4rem 4rem;
-}
-
-.signupWrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.signUpButton{
-    width: 100%;
-}
-
-.signupLoginLogoContainer{
-    padding: 1rem;
-    text-align: center;
-}
-
-
-/* FEED */
-
-
-.box{
-    border: 1px solid rgb(42, 103, 131);
-    background-color: rgb(23, 77, 96);
-}
-
-
-
-.pageLinkBox{
-    color: white;
-    text-decoration: none;
-}
-
-.pageLinkBox:hover{
-    color: white;
-    opacity: .8;
-}
-
-
-
-
-
-
-/* EJS LAYOUTS W/ TAILWIND */
-
-
-
-
-
-/* SCROLLBAR */
-/* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #050505 #545454;
-  }
-
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 16px;
-  }
-
-  *::-webkit-scrollbar-track {
-    background: #545454;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background-color: #050505;
-    border-radius: 10px;
-    border: 3px none #ffffff;
-  }
-
-
-/* INDEX PAGE + BASE STYLES */
-.bg-base-100,
-.input,
-.textarea,
-.bg-gray-50,
-input#file-upload-button{
-    background-color: #151414 !important;
-}
-
-
-.btn-primary{
-    background-color: green;
-}
-
-.btn{
-    color:white ;
-}
-
-.green{
-    background-color: rgb(35, 149, 35);
-    outline: none;
-    border: none;
-}
-
-#heroContainer{
-    background-image: url('../imgs/planted2.jpg');
-}
 
 .hero-content{
-    background-color: rgba(29, 29, 30, 0.591);
-    border-radius: 10px;
+    margin-top: -300px !important;
 }
+
+@media all and (max-width: 1900px){
+    .hero-content{
+        margin-top: 0 !important;
+    }
+}
+
+
+
 
 .banner{
-    height: 250px;
-    background-position: center;
+    height: 300px;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-position: center;
 }
 
-.banner h2{
-    font-size: 3rem;
-}
+@media all and (min-width:1900px){
 
-.bannerGlassBkg{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 150px;
-    background-color: rgb(3, 3, 3, .6);
-}
 
-/* Card styles */
-
-.feedCard{
-    background-color: #202727;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    /* border: 1px solid blue; */
-    padding: .5rem 1rem;
-    margin: 0 0 2rem 0;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid rgb(112, 112, 112);
-}
-
-.feedCard:hover{
-    border: 1px solid white;
-}
-
-.cardImgContainer{
-    width: 175px;
+body {
+    background-color: #2F5498;
+  }
+  
+  /* Franklin's Container */
+  .fish {
+    width: 150px;
     height: 100px;
-    margin-right: 1rem;
-}
-
-.cardImg{
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-}
-
-.cardTextContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-left: 2rem;
-}
-
-
-/* FEED PAGE */
-
-
-.tag{
-    padding: .3rem 1rem;
-    background-color: rgba(209, 162, 32, 0.687);
-    border-radius: 20px;
- }
- 
- .buyTag{
-    background-color: #39aaa8;
- }
-
- .sellTag{
-    background-color: #23ac3f;
-}
-
-.tradeTag{
-    background-color: #6d3a7b;
-}
-
-.servicesTag{
-    background-color: #c85d28;
-}
-
-.gapper{
+    animation: swim 3s infinite; 
+  }
+  
+  /* Franklin */
+  .fish-body {
+    position: relative;
+    margin-top: 30px;
+    margin-left: 40px;
+    background-color: orange;
+    border-radius: 50%;
+    width: 150px; 
+    height: 100px;
+  }
+  
+  .eye {
+    position: absolute;
+    margin-left: 100px;
+    margin-top: 20px;
+    z-index: 1;
+    background-color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .pupil {
+    position: absolute;
+    z-index: 2;
+    margin-left: 5px;
+    margin-top: 5px;
+    background-color: black;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+  }
+  
+  .fin {
+    margin-top: -100px; 
+    background-color: orange;
+    border-radius: 50%;
+    transform: rotate(40deg);
+    width: 80px;
     height: 50px;
-}
-
-.feedContentCard{
-    width: 50%;
-}
-
-
-/* Live fish feed */
-
-
-
-.fishContentContainer{
-    width: 75%;
-    margin: 0 auto;
-}
-
-
-
-/* Profile Styles */
-
-.profileFeedContainer{
-    /* border: 1px solid red; */
-    width: 60%;
-}
-
-.profileContentContainer{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-input{
-    color: black;
-}
-
-input:placeholder{
-    color: black;
-}
-
-.profileFormContainer{
-    padding: 1rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    align-self: flex-start;
-}
-
-.profileFormContainer form > *{
-    width: 100%;
-}
-
-#caption{
-    width: 100%;
-    margin: 10px 0;
-}
-
-
-
-.selectContainer{
-    display: flex;
-    flex-direction: column;
-}
-
-
-
-/* POSTS */
-
-.postPageContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.postContentContainer{
-    width: 50%;
-    margin: 0 auto;
-    margin-top: 5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
-}
-
-.postContentContainer .img{
-    /* width: 65%; */
-    margin: 0;
-    /* align-self: center; */
-}
-
-.returnContainer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    margin-top: 3rem;
-}
-
-.postCaptionContainer{
-    background-color: #151414;
-    max-width: 50%;
-    margin: 1rem 0;
-}
-
-.postActionsContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    display: flex;
-    width: 100%;
-}
-
-.makeCommentContainer{
-    width: 30%;
-    margin: 3rem 0;
-}
-
-.makeCommentContainer form {
-    display: flex;
-    flex-direction: column;
-}
-
-.makeCommentContainer textarea {
-    width: 100%;
-    height: 150px;
-    border-radius: 10px 10px 0 0;
-}
-
-.makeCommentContainer button {
-    border-radius: 0 0 10px 10px;
-}
-
-.postCommentsContainer{
-    margin-bottom: 3rem;
-    border-radius: 8px;
-    width: 40%;
-}
-
-.commentContainer{
-    /* border: 1px solid orange; */
-    padding: 2rem;
-    border-bottom: 1px solid lightgray;
-    display: flex;
-    justify-content: space-between;
-}
-
-.commentContainer:last-child{
-    border: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* PROFILE MEDIA QUERIES */
-
-@media all and (max-width: 800px){
-
-    .profileFeedContainer{
-        width: 100%;
+  }
+  
+  .fin-bottom {
+    margin-top: -10px;
+    transform: rotate(-40deg);
+  }
+  
+  /* Bubbles */
+  .bubbles {
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    margin-right: 50px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: .50;
+    width: 40px;
+    height: 40px;
+    animation: up 4s infinite;
+  }
+  
+  .bubble-2 {
+    left: 350px;
+    animation: up 2s infinite;
+  }
+  
+  .bubble-3 {
+    left: 750px;
+    opacity: .30;
+    animation: up 5s infinite;
+  }
+  
+  .bubble-4 {
+    left: 1150px;
+    animation: up 6s infinite;
+  }
+  
+  .bubble-5 {
+    left: 50px;
+    animation: up 5s infinite;
+  }
+  
+  .bubble-6 {
+    left: 300px;
+    opacity: .30;
+    animation: up 3s infinite;
+  }
+  
+  .bubble-7 {
+    left: 670px;
+    animation: up 4s infinite;
+  }
+  
+  .bubble-8 {
+    left: 1050px;
+    opacity: .30;
+    animation: up 4s infinite;
+  }
+
+  .bubble-9 {
+    left: 1200px;
+    opacity: .30;
+    animation: up 3s infinite;
+  }
+
+
+  .bubble-10 {
+    left: 1380px;
+    opacity: .30;
+    animation: up 4s infinite;
+  }
+
+
+  .bubble-11 {
+    left: 1594px;
+    opacity: .30;
+    animation: up 5s infinite;
+  }
+
+
+  .bubble-12 {
+    left: 1700px;
+    opacity: .30;
+    animation: up 3s infinite;
+  }
+
+
+  
+  /* Swim Animation */
+  @keyframes swim {
+    0% {
+      transform: translateY(-50px) translateX(200px) rotate(30deg);
     }
-
-}
-
-
-/* FEED MEDIA QUERIES */
-
-@media all and (max-width:800px){
-
-    .feedContainerCard{
-        width: 100%;
-        margin: 0;
-        padding: 0;
+    25% { 
+      transform: translateY(75px) translateX(500px) rotate(20deg);
     }
+    50% {
+      transform: translateY(100px) translateX(900px);
+    }
+    75% {
+      transform: translateY(50px) translateX(1200px) rotate(-20deg);
+    }
+    100% {
+      transform: translateY(-250px) translateX(1600px) rotate(-40deg);
+    }
+  }
+  
+  /* Bubbles Animation */
+  @keyframes up {
+    100% {
+      transform: translateY(-800px);
+    }
+  }
+  
 }

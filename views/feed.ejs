@@ -1,5 +1,5 @@
 <!-- NAVBAR -->
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-300">
     <div class="navbar-start">
         <div class="dropdown">
             <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -29,88 +29,46 @@
         <a class="btn btn-ghost normal-case text-xl">The Reef</a>
     </div>
     <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal p-0">
+        <ul class="menu menu-horizontal p-0 gap-10">
             <li><a href="/buy-sell-trade/live-fish">Fish</a></li>
             <li><a href="/buy-sell-trade/aquatic-plants">Plants</a></li>
             <li><a href="/buy-sell-trade/offer-services">Services</a></li>
         </ul>
     </div>
     <div class="navbar-end">
-        <a href="/profile" class="btn btn-active text-white bg-lime-600 hover:bg-lime-500">Profile</a>
+        <a href="/profile" class="btn btn-primary">Profile</a>
     </div>
 </div>
 
-<!-- BANNER -->
-<div class="banner bg-[url('/imgs/planted2.jpg')]">
-    <div class="bannerGlassBkg">
-        <h2>General Discussion</h2>
-    </div>
-</div>
+
 
 
 <!-- MAIN FEED -->
 <div class="container mx-auto">
-    <div class="flex flex-col w-full">
-        <!-- <div class="gapper"></div>
-      <div class="feedContentCard grid h-20 bg-base-300 place-items-center">
-          <h1>General Discussion</h1>
-          <p>All posts will show here, feel free to discuss anything aquatic, ask questions, etc.</p>
-      </div> -->
 
-    </div>
-    <div class="gapper"></div>
+    <!-- <div class="gapper"></div> -->
 
     <% for(let i=0; i < posts.length; i++) {%>
-        <div class="p-12 feedContentCard grid h-auto bg-base-300 mx-auto place-items-center">
-            <div class="w-full place-items-left">
-                <% if(posts[i].typeOfPost==='Sell' ) { %>
-                    <span class="sellTag tag text-left">
-                        <%=posts[i].typeOfPost %>
-                    </span>
-                    <%} else if(posts[i].typeOfPost==='Buy' ) {%>
-                        <span class="buyTag tag text-left">
-                            <%=posts[i].typeOfPost %>
-                        </span>
-                        <%} else if(posts[i].typeOfPost==='Trade' ) {%>
-                            <span class="tradeTag tag text-left">
-                                <%=posts[i].typeOfPost %>
-                            </span>
-                            <%} else if(posts[i].typeOfPost==='Looking For Services' ) {%>
-                                <span class="servicesTag tag text-left">
-                                    <%=posts[i].typeOfPost %>
-                                </span>
-                                <%} %>
 
-                                    <h3 class="text-left">
-                                        <%= posts[i].title%>
-                                    </h3>
-                                    <p>
-                                        <%= posts[i].caption%>
-                                    </p>
-            </div>
-            <a href="/post/<%= posts[i]._id%>">
-                <img class="" src="<%= posts[i].image%>" alt="">
+        
+            <div class="card card-side bg-base-300 shadow-xl my-12">
+                <a href="/post/<%= posts[i]._id %>">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <%= posts[i].title %>
+                    </h2>
+                    <p class="w-1/2">
+                        <%= posts[i].caption %>
+                    </p>
+                    <a class="btn btn-primary w-1/4" href="/post/<%= posts[i]._id %>">Add Comment</a>
+                </div>
+                <img class="w-1/4" src="<%= posts[i].image %>" alt="Image" />
             </a>
-        </div>
-        <div class="gapper"></div>
+            </div>
+        
+
         <% } %>
 
-
-            <!-- <div class="feedContentCard grid h-20 bg-base-300 place-items-center">
-          <h1>Live Fish</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius sint, reprehenderit atque vitae perferendis commodi rem voluptatum! Quisquam, eos modi.</p>
-      </div>
-      <div class="gapper"></div>
-      <div class="feedContentCard grid h-20 bg-base-300 place-items-center">
-          <h1>Live Plants</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius sint, reprehenderit atque vitae perferendis commodi rem voluptatum! Quisquam, eos modi.</p>
-      </div>
-      <div class="gapper"></div>
-      <div class="feedContentCard grid h-20 bg-base-300 place-items-center">
-          <h1>Offer your services</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius sint, reprehenderit atque vitae perferendis commodi rem voluptatum! Quisquam, eos modi.</p>
-      </div>
-      <div class="gapper"></div> -->
 </div>
 </div>
 
