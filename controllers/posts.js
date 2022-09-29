@@ -1,18 +1,19 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
+const User = require("../models/User");
+const axios = require('axios');
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id }).sort({ createdAt: "desc" });
-      // res.render("profile.ejs", { posts: posts, user: req.user });
       res.render('profile', {
         posts: posts,
         user: req.user,
         layout: './layouts/mainLayout',
-    },
-    )
+      },
+      )
     } catch (err) {
       console.log(err);
     }
@@ -20,8 +21,24 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      // console.log(posts)
-      res.render("feed", { posts: posts });
+      const options = {
+        method: 'GET',
+        url: `https://bing-news-search1.p.rapidapi.com/news/search`,
+        params: { q: `fish aquarium`, freshness: 'Day', textFormat: 'Raw', safeSearch: 'Off' },
+        headers: {
+            'X-BingApis-SDK': 'true',
+            'X-RapidAPI-Key': 'db3e8ae18bmshd7bb610557d438fp1e9721jsneadf0cccb21c',
+            'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
+        }
+    };
+      
+      axios.request(options).then(async function (response) {
+        let newsArray = response.data.value
+        // console.log(newsArray[0].image)
+        res.render('feed', {posts: posts, news: newsArray})
+      }).catch(function (error) {
+          console.error(error);
+      });
     } catch (err) {
       console.log(err);
     }
@@ -29,23 +46,25 @@ module.exports = {
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
+      const posterId = post.user
+      const userThatPosted = await User.findById(posterId).lean()
+      // console.log(userThatPosted.userName)
       const comments = await Comment.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean();
-      res.render("post.ejs", { post: post, user: req.user, comments: comments });
+      res.render("post.ejs", { post: post, user: req.user, comments: comments, postUser: userThatPosted.userName });
     } catch (err) {
       console.log(err);
     }
   },
   createPost: async (req, res) => {
     try {
-      // Upload image to cloudinary
-      // const typeOfPost = req.body.typeOfPostSelect
-      // console.log(typeOfPost)
-      const result = await cloudinary.uploader.upload(req.file.path);
+      let image
+      if (req.file) image = await cloudinary.uploader.upload(req.file.path);
+      // const result = await cloudinary.uploader.upload(req.file.path);
 
       await Post.create({
         title: req.body.title,
-        image: result.secure_url,
-        cloudinaryId: result.public_id,
+        image: image ? image.secure_url : null,
+        cloudinaryId: image ? image.public_id : null,
         caption: req.body.caption,
         likes: 0,
         typeOfPost: req.body.typeOfPostSelect,
@@ -76,10 +95,10 @@ module.exports = {
     try {
       // Find post by id
       let post = await Post.findById({ _id: req.params.id });
-      console.log({post})
+      console.log({ post })
       // Delete image from cloudinary
       await cloudinary.uploader.destroy(post.cloudinaryId);
-      
+
       // Delete post from db
       await Post.remove({ _id: req.params.id });
       console.log("Deleted Post");

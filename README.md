@@ -47,6 +47,7 @@ bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mon
 # Install
 
 `npm install`
+`npx tailwindcss -i ./public/css/style.css -o ./public/css/tailwind.css --watch`
 
 ---
 
