@@ -5,6 +5,53 @@
 
 
 
+
+
+/* GENERAL / BASE STYLES */
+.postLink:hover{
+  opacity: .8;
+}
+
+.tag{
+  padding: .3rem 1rem;
+  border-radius: 10px;
+}
+
+.buyTag{
+  background-color: purple;
+}
+
+/* FEED */
+
+#feedContainer{
+  /* border: 1px solid red; */
+  display: flex;
+  width: 100%;
+}
+
+.statsCardContainer{
+  /* border: 3px solid yellow; */
+}
+
+.newsContainer{
+  /* border: 1px solid rgb(170, 168, 29); */
+}
+
+.feedCardContainer{
+  /* border: 4px solid purple; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feedCardContainer h3{
+  font-size: 3rem;
+}
+
+
+
+
+
 .hero-content{
     margin-top: -300px !important;
 }

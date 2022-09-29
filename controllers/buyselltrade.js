@@ -11,7 +11,9 @@ module.exports = {
     )
     },  
     getAquaticPlantIndex: async (req, res) => {
+      const plantPosts = await Post.find({postCategory: 'Plants'}).sort({ createdAt: "desc" }).lean()
       res.render('liveplants', {
+        posts: plantPosts,
         layout: './layouts/mainLayout',
     })
       },

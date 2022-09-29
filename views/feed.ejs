@@ -31,7 +31,7 @@
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0 gap-10">
             <li><a href="/buy-sell-trade/live-fish">Fish</a></li>
-            <li><a href="/buy-sell-trade/aquatic-plants">Plants</a></li>
+            <li><a href="/buy-sell-trade/aquatic-plants">Aquatic plants</a></li>
             <li><a href="/buy-sell-trade/offer-services">Services</a></li>
         </ul>
     </div>
@@ -42,25 +42,47 @@
 
 
 
-
 <!-- MAIN FEED -->
-<div class="container mx-auto">
+<div id="feedContainer" class="">
 
+    
+
+
+    <div class="feedCardContainer container w-3/4 pt-8">
+        <h3>Latest Listings</h3>
     <!-- <div class="gapper"></div> -->
 
     <% for(let i=0; i < posts.length; i++) {%>
 
         
-            <div class="card card-side bg-base-300 shadow-xl my-12">
-                <a href="/post/<%= posts[i]._id %>">
+            <div class="card card-side bg-base-300 shadow-xl my-12 w-5/6">
+                <a class="postLink" href="/post/<%= posts[i]._id %>">
                 <div class="card-body">
-                    <h2 class="card-title">
+                    <% if(posts[i].typeOfPost==='Sell') { %>
+                        <span class="tag  bg-lime-600">
+                            <%=posts[i].typeOfPost %>
+                        </span>
+                    <%} else if(posts[i].typeOfPost==='Buy') {%>
+                        <span class="tag bg-purple-600">
+                            <%=posts[i].typeOfPost %>
+                        </span>
+                    <%} else if(posts[i].typeOfPost==='Trade') {%>
+                        <span class="tag bg-pink-600">
+                            <%=posts[i].typeOfPost %>
+                        </span>
+                    <%} else if(posts[i].typeOfPost==='Services') {%>
+                        <span class="tag bg-amber-600">
+                            <%=posts[i].typeOfPost %>
+                        </span>
+                    <%} %>
+                    <h2 class="my-2 card-title">
                         <%= posts[i].title %>
                     </h2>
                     <p class="w-1/2">
                         <%= posts[i].caption %>
                     </p>
-                    <a class="btn btn-primary w-1/4" href="/post/<%= posts[i]._id %>">Add Comment</a>
+                    <a class="btn btn-primary w-1/4" href="/post/<%= posts[i]._id %>">Check it out</a>
+                    <span><%= posts[i].createdAt %></span>
                 </div>
                 <img class="w-1/4" src="<%= posts[i].image %>" alt="Image" />
             </a>
@@ -68,8 +90,23 @@
         
 
         <% } %>
+    </div>
 
-</div>
+
+    <div class="statsCardContainer">
+        <div class="card w-96 bg-neutral text-neutral-content mt-10">
+            <div class="card-body items-center text-center">
+                <h4 class="card-title text-5xl">312</h4>
+              <h5>Posts</h5>
+            </div>
+            <div class="card-body items-center text-center">
+                <h4 class="card-title text-5xl">2109</h4>
+                <h5>Members</h5>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 <%- include('partials/footer') -%>

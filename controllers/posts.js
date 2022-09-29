@@ -1,13 +1,13 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
-const User = require("../models/User")
+const User = require("../models/User");
+const axios = require('axios');
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id }).sort({ createdAt: "desc" });
-      // res.render("profile.ejs", { posts: posts, user: req.user });
       res.render('profile', {
         posts: posts,
         user: req.user,
@@ -21,7 +21,24 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed", { posts: posts });
+      const options = {
+        method: 'GET',
+        url: `https://bing-news-search1.p.rapidapi.com/news/search`,
+        params: { q: `fish aquarium`, freshness: 'Day', textFormat: 'Raw', safeSearch: 'Off' },
+        headers: {
+            'X-BingApis-SDK': 'true',
+            'X-RapidAPI-Key': 'db3e8ae18bmshd7bb610557d438fp1e9721jsneadf0cccb21c',
+            'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
+        }
+    };
+      
+      axios.request(options).then(async function (response) {
+        let newsArray = response.data.value
+        // console.log(newsArray[0].image)
+        res.render('feed', {posts: posts, news: newsArray})
+      }).catch(function (error) {
+          console.error(error);
+      });
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +48,7 @@ module.exports = {
       const post = await Post.findById(req.params.id);
       const posterId = post.user
       const userThatPosted = await User.findById(posterId).lean()
-      console.log(userThatPosted.userName)
+      // console.log(userThatPosted.userName)
       const comments = await Comment.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean();
       res.render("post.ejs", { post: post, user: req.user, comments: comments, postUser: userThatPosted.userName });
     } catch (err) {
