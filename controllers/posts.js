@@ -21,6 +21,12 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      const latestListings = [];
+      const numOfPosts = posts.length;
+      for(let i = 0; i < 5; i++){
+        latestListings.push(posts[i])
+      }
+      
       const options = {
         method: 'GET',
         url: `https://bing-news-search1.p.rapidapi.com/news/search`,
@@ -34,8 +40,8 @@ module.exports = {
       
       axios.request(options).then(async function (response) {
         let newsArray = response.data.value
-        // console.log(newsArray[0].image)
-        res.render('feed', {posts: posts, news: newsArray})
+        
+        res.render('feed', {posts: posts, news: newsArray, numOfPosts: numOfPosts})
       }).catch(function (error) {
           console.error(error);
       });

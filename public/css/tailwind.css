@@ -2312,18 +2312,9 @@ html {
   background-color: hsl(var(--b2, var(--b1)) / var(--tw-bg-opacity));
 }
 
-.bg-purple-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(168 85 247 / var(--tw-bg-opacity));
-}
-
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
-.bg-\[url\(\'\/imgs\/122-plant-aquarium\.jpg\'\)\] {
-  background-image: url('/imgs/122-plant-aquarium.jpg');
 }
 
 .fill-current {

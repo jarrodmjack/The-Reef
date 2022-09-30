@@ -18,8 +18,10 @@ module.exports = {
     })
       },
       getServicesIndex: async (req, res) => {
-        res.render('offerservices', {
-          layout: './layouts/mainLayout',
+        const servicesPosts = await Post.find({postCategory: 'Services'}).sort({ createdAt: "desc" }).lean()
+      res.render('offerservices', {
+        posts: servicesPosts,
+        layout: './layouts/mainLayout',
       })
       },
   };

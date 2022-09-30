@@ -1,1 +1,99 @@
-<h1>SERVICES</h1>
+<!-- NAVBAR -->
+<div class="navbar bg-base-100">
+    <div class="navbar-start">
+        <div class="dropdown">
+            <label tabindex="0" class="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+            </label>
+            <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a>Item 1</a></li>
+                <li tabindex="0">
+                    <a class="justify-between">
+                        Parent
+                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24">
+                            <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                        </svg>
+                    </a>
+                    <ul class="p-2">
+                        <li><a>Submenu 1</a></li>
+                        <li><a>Submenu 2</a></li>
+                    </ul>
+                </li>
+                <li><a>About</a></li>
+            </ul>
+        </div>
+        <a class="btn btn-ghost normal-case text-xl">The Reef</a>
+    </div>
+    <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal p-0 gap-10">
+            <li><a href="/feed">Feed</a></li>
+            <li><a href="/buy-sell-trade/aquatic-plants">Aquatic Plants</a></li>
+            <li><a href="/buy-sell-trade/live-fish">Fish</a></li>
+
+        </ul>
+    </div>
+    <div class="navbar-end">
+        <a href="/profile" class="btn-active text-white btn hover:btn">Profile</a>
+    </div>
+</div>
+
+<!-- MAIN FEED -->
+<div id="feedContainer" class="w-full">
+
+    
+
+
+    <div class="feedCardContainer w-full pt-8">
+        <h3>Services Listings</h3>
+    <!-- <div class="gapper"></div> -->
+
+    <% for(let i=0; i < posts.length; i++) {%>
+
+        
+            <div class="card card-side bg-base-300 shadow-xl my-12 w-5/6">
+                <a class="postLink" href="/post/<%= posts[i]._id %>">
+                <div class="card-body">
+                    <% if(posts[i].typeOfPost==='Sell') { %>
+                        <span class="tag  bg-lime-600">
+                            <%=posts[i].typeOfPost %>
+                        </span>
+                    <%} else if(posts[i].typeOfPost==='Buy') {%>
+                        <span class="tag bg-purple-600">
+                            <%=posts[i].typeOfPost %>
+                        </span>
+                    <%} else if(posts[i].typeOfPost==='Trade') {%>
+                        <span class="tag bg-pink-600">
+                            <%=posts[i].typeOfPost %>
+                        </span>
+                    <%} else if(posts[i].typeOfPost==='Services') {%>
+                        <span class="tag bg-amber-600">
+                            <%=posts[i].typeOfPost %>
+                        </span>
+                    <%} %>
+                    <h2 class="my-2 card-title">
+                        <%= posts[i].title %>
+                    </h2>
+                    <p class="w-1/2">
+                        <%= posts[i].caption %>
+                    </p>
+                    <a class="btn btn-primary w-1/4" href="/post/<%= posts[i]._id %>">Check it out</a>
+                    <span><%= posts[i].createdAt %></span>
+                </div>
+                <img class="w-1/4" src="<%= posts[i].image %>" alt="Image" />
+            </a>
+            </div>
+        
+
+        <% } %>
+    </div>
+
+
+
+
+</div>
+
+<%- include('partials/footer') -%>

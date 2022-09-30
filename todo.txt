@@ -1,0 +1,3 @@
+change posts card on feed page to show actual amount of posts
+fix profile layout
+fix post/postId layout
