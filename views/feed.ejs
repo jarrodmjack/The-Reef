@@ -81,7 +81,11 @@
                     <p class="w-1/2">
                         <%= posts[i].caption %>
                     </p>
-                    <a class="btn btn-primary w-1/4" href="/post/<%= posts[i]._id %>">Check it out</a>
+                    <% if(posts[i].postCategory === 'General') {%>
+                        <a class="btn btn-primary w-1/4" href="/post/<%= posts[i]._id %>">Join Discussion</a>
+                    <% } else { %>
+                        <a class="btn btn-primary w-1/4" href="/post/<%= posts[i]._id %>">Check it out</a>
+                    <% } %>
                     <span><%= posts[i].createdAt %></span>
                 </div>
                 <img class="w-1/4" src="<%= posts[i].image %>" alt="Image" />

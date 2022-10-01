@@ -105,49 +105,50 @@
     </form>
   </div>
 
+  <div class="feedCardContainer w-full pt-8">
+    <h3>My posts</h3>
+<!-- <div class="gapper"></div> -->
 
+<% for(let i=0; i < posts.length; i++) {%>
 
-  <div class="profileFeedContainer fishContentContainer">
-
-
-
-    <% for(let i=0; i < posts.length; i++) { %>
-      <a href="/post/<%= posts[i].id %>">
-        <div class="profileFeedCard feedCard">
-          <div class="cardTextContainer">
-            <h1>
-              <% if(posts[i].typeOfPost==='Sell' ) { %>
-                <span class="sellTag tag text-left">
-                  <%=posts[i].typeOfPost %>
-                </span>
-                <%} else if(posts[i].typeOfPost==='Buy' ) {%>
-                  <span class="buyTag tag text-left">
-                    <%=posts[i].typeOfPost %>
-                  </span>
-                  <%} else if(posts[i].typeOfPost==='Trade' ) {%>
-                    <span class="tradeTag tag text-left">
-                      <%=posts[i].typeOfPost %>
-                    </span>
-                    <%} else if(posts[i].typeOfPost==='Looking For Services' ) {%>
-                      <span class="servicesTag tag text-left">
+    
+        <div class="card card-side bg-base-300 shadow-xl my-12 w-5/6">
+            <a class="postLink" href="/post/<%= posts[i]._id %>">
+            <div class="card-body">
+                <% if(posts[i].typeOfPost==='Sell') { %>
+                    <span class="tag  bg-lime-600">
                         <%=posts[i].typeOfPost %>
-                      </span>
-                      <%} %>
-
-                        <%= posts[i].title %>
-            </h1>
-
-            <p>
-              <%= posts[i].caption %>
-            </p>
-
-          </div>
-          <div class="cardImgContainer">
-            <img class="cardImg" src="<%= posts[i].image %>" alt="">
-          </div>
+                    </span>
+                <%} else if(posts[i].typeOfPost==='Buy') {%>
+                    <span class="tag bg-purple-600">
+                        <%=posts[i].typeOfPost %>
+                    </span>
+                <%} else if(posts[i].typeOfPost==='Trade') {%>
+                    <span class="tag bg-pink-600">
+                        <%=posts[i].typeOfPost %>
+                    </span>
+                <%} else if(posts[i].typeOfPost==='Services') {%>
+                    <span class="tag bg-amber-600">
+                        <%=posts[i].typeOfPost %>
+                    </span>
+                <%} %>
+                <h2 class="my-2 card-title">
+                    <%= posts[i].title %>
+                </h2>
+                <p class="w-1/2">
+                    <%= posts[i].caption %>
+                </p>
+                <a class="btn btn-primary w-1/4" href="/post/<%= posts[i]._id %>">Check it out</a>
+                <span><%= posts[i].createdAt %></span>
+            </div>
+            <img class="w-1/4" src="<%= posts[i].image %>" alt="Image" />
+        </a>
         </div>
-      </a>
-      <% } %>
-  </div>
+    
+
+    <% } %>
+</div>
+
+  
 </div>
 <%- include('partials/footer') -%>
