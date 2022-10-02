@@ -56,7 +56,19 @@ module.exports = {
       const userThatPosted = await User.findById(posterId).lean()
       // console.log(userThatPosted.userName)
       const comments = await Comment.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean();
-      res.render("post.ejs", { post: post, user: req.user, comments: comments, postUser: userThatPosted.userName });
+      // res.render("post.ejs", {
+      //   post: post,
+      //   user: req.user,
+      //   comments: comments, 
+      //   postUser: userThatPosted.userName 
+      // });
+      res.render('post.ejs', {
+        post: post,
+        user: req.user,
+        comments: comments,
+        postUser: userThatPosted.userName,
+        layout: './layouts/mainLayout',
+      })
     } catch (err) {
       console.log(err);
     }
