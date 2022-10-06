@@ -4,7 +4,7 @@
 
 
 # Introduction
-
+*SITE NOT LIVE YET*
 This is The Reef. A buy/sell/trade/services forum-type web application for aquarists in my local area. The area I am in has a bunch of aquarists, but no dedicated buy/sell/trade application that people can use to get in touch with other hobbyists
 
 ---
